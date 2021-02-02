@@ -31,4 +31,4 @@ This repository will contain every piece of material about the subject. It will 
 [You don't know JS Books (free)](https://github.com/getify/You-Dont-Know-JS)
 
 ## Contact
-Trainer: viktorjakovlev@hotmail.com
+Trainer: viktorjakovlev@hotmail.com 
