@@ -85,7 +85,7 @@ if (student.age === student.getAge()) {
 
 
 
-function Student(fName, lName, age, birthYear, subjects, currentSubject, academy) {
+function Student(fName, lName, birthYear, subjects, academy,  currentSubject = "AJS", age = 20) {
     this.firstName = fName;
     this.lastName = lName;
     this.age = age;
@@ -139,3 +139,52 @@ if (slavko.currentSubject === "C#") {
 console.log(slavko);
 console.log(ivan);
 console.log(martin);
+
+
+// Show/Hide of forms buttons
+let btnNewStudent = document.getElementById("btnNewStudent");
+let btnNewAcademy = document.getElementById("btnNewAcademy");
+
+// Forms itself
+let formStudent = document.getElementById("formStudent");
+let formAcademy = document.getElementById("formAcademy");
+
+// Add buttons
+let btnAddStudent = document.getElementById("addStudent");
+let btnAddAcademy = document.getElementById("addAcademy");
+
+btnNewStudent.addEventListener('click', function () {
+    formStudent.style.display = 'block';
+    formAcademy.style.display = 'none';
+});
+
+btnNewAcademy.addEventListener('click', function () {
+    formAcademy.style.display = 'block';
+    formStudent.style.display = 'none';
+});
+
+let students = [martin, ivan, slavko];
+
+btnAddStudent.addEventListener('click', function (event) {
+    event.preventDefault();
+    let fName = document.getElementById("fName").value;
+    let lName = document.getElementById("lName").value;
+    let birthYear = document.getElementById("birthYear").value;
+    let academy = document.getElementById("academy").value;
+    let subjects = document.getElementById("subjects").value;
+
+    let newStudent = new Student(fName, lName, birthYear, subjects, academy);
+    students.push(newStudent);
+    console.log(students);
+    //printStudens(students);
+
+});
+
+btnAddAcademy.addEventListener('click', function () {
+    let city = document.getElementById("city").value;
+    let address = document.getElementById("address").value;
+    let phone = document.getElementById("phone").value;
+    let numOfStudents = document.getElementById("numOfStudents").value;
+    
+
+});
