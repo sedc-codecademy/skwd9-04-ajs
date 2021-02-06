@@ -1,1 +1,1 @@
-Create interactive UI for the CreditorDeptor exercise
+Create interactive UI for the CreditorDebtor exercise.
