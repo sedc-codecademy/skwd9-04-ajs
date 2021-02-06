@@ -20,9 +20,9 @@ Create a web calculator with all the standard features. The calculator should ha
  ![Calculator](https://thumbs.gfycat.com/WholeTartIberianchiffchaff-size_restricted.gif)
 
  ## For the brave :)
+ [Advent of Code](https://adventofcode.com/)
 
 ## Information on the homework
-[Advent of Code](https://adventofcode.com/)
 
 * Due Date: End of AJS
 * Contact: viktorjakovlev@hotmail.com
