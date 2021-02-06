@@ -26,9 +26,12 @@ This repository will contain every piece of material about the subject. It will 
 #### Books
 [Secret of the JavaScript Ninja Second Edition](https://www.bookdepository.com/Secrets-of-the-JavaScript-Ninja--Second-Edition/9781617292859)
 
+[JavaScript and JQuery - Jon Duckett](https://www.bookdepository.com/JavaScript-JQuery-Jon-Duckett/9781118531648)
+
 [Eloquent JavaScript (free)](https://eloquentjavascript.net/)
 
 [You don't know JS Books (free)](https://github.com/getify/You-Dont-Know-JS)
+
 
 ## Contact
 Trainer: viktorjakovlev@hotmail.com 
