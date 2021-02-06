@@ -31,7 +31,7 @@ let headers = document.querySelector(".header");
 let h1 = document.getElementById("mainTitle");
 console.log(h1.innerText); // prints the text from the selected element in console
 h1.innerText = "New Text"; // Changes the text of the selected element
-h1.innerTet += " + Extension" // Adds new text next to the old one in the selected element
+h1.innerText += " + Extension" // Adds new text next to the old one in the selected element
 
 let div = document.getElementsByTagName("div")[0]; // select the first div
 console.log(div.innerHTML); // Will print all the HTML from the selected div
