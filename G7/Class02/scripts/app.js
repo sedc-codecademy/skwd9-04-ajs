@@ -57,7 +57,7 @@ function signUp() {
     cleanUpInputs(signupInputs);
 
     // navigate to the login form
-
+        
 }
 
 function cleanUpInputs(inputs) {
