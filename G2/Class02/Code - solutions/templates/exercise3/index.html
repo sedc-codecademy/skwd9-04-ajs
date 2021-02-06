@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Index</title>
+</head>
+
+<body>
+    <h1>Reminder app</h1>
+    Title: <input type="text" id="title"/> <br/>
+    Priority: <select id="priority">
+        <option value="">---Nothing selected---</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
+    Color: <input type="color" id="color"/>
+    Description: <textarea id="description"></textarea>
+    <input type="button" id="createReminderBtn" value="Create reminder"/>
+    <input type="button" id="showRemindersBtn" value="Show reminders"/>
+  <div id="result"></div>
+  <script src="../../scripts/exercise3/app.js">
+  </script>
+</body>
+</html>
