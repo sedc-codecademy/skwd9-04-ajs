@@ -17,6 +17,7 @@ const loginEmail = loginForm.querySelector('#login-email');
 const loginPassword = loginForm.querySelector('#login-password');
 const loginBtn = loginForm.querySelector('#login-button');
 const loginError = loginForm.querySelector('#login-error');
+const loginInputs = [loginEmail, loginPassword];
 
 // Signup form
 const signupForm = document.querySelector('#signup-form');
@@ -30,6 +31,10 @@ const signupInputs = [signupName, signupEmail, signupPassword];
 
 // Other elements, pages, etc.
 const links = document.querySelectorAll('.link')
+const homePage = document.querySelector('#home-page')
+const authPage = document.querySelector('#auth-page')
+const logOutBtn = homePage.querySelector('a')
+const homePageTitle = homePage.querySelector('h1')
 
 // [Data]
 let showLoginForm = true;
@@ -38,7 +43,9 @@ const users = [];
 // [Functions]
 
 function signUp() {
+    // Reset signup form errors
     signupError.innerText = '';
+    // if we have invalid inputs, show error
     if (!validateInputs(signupInputs)) {
         signupError.innerText = 'Please check inputs';
         // Return to stop the further execution of code
@@ -57,7 +64,57 @@ function signUp() {
     cleanUpInputs(signupInputs);
 
     // navigate to the login form
-        
+    showLoginForm = true;
+    showForm();
+}
+
+function logIn() {
+    // reset error message
+    loginError.innerText = '';
+    // if we have invalid inputs we are showing error
+    if (!validateInputs(loginInputs)) {
+        loginError.innerText = 'Please check inputs';
+        return;
+    } 
+
+    // this will be undefined until a user is found
+    let loggedInUser;
+
+    // searching for a user with the same email and password as entered in the login form
+    for (const user of users) {
+        if (user.email === loginEmail.value && user.password === loginPassword.value) {
+            // if a user is found, stop searching and save the user to the loggedInUser variable
+            loggedInUser = user;
+            break;
+        }
+    }
+
+    // if no user is found, show error
+    if (!loggedInUser) {
+        loginError.innerText = 'Entered credentials are wrong, please check and try again';
+        return;
+    }
+
+    // clean input values
+    cleanUpInputs(loginInputs);
+
+    // Show logged in info to the logged in user
+    homePageTitle.innerText = `Hi, you are logged in as ${loggedInUser.name}`;
+
+    // show the homepage and hide the forms
+    changeView(homePage, authPage)
+}
+
+function logOut() {
+    // Reset the title on homepage
+    homePageTitle.innerText = '';
+
+    // show authentication page and hide homepage
+    changeView(authPage, homePage);
+
+    // making sure that we show the login form
+    showLoginForm = true;
+    showForm();
 }
 
 function cleanUpInputs(inputs) {
@@ -102,12 +159,15 @@ function changeView(show, hide) {
 function init() {
     showForm();
     setLinkEventHandlers();
+    changeView(authPage, homePage);
 }
 
 // [Event Handlers]
 
 function setLinkEventHandlers() {
+    // go though all the link elements
     for (const link of links) {
+        // attach event listeners to each single one of them
         link.addEventListener('click', function () {
             // Show the opposite of whatever is shown at the moment
             showLoginForm = !showLoginForm;
@@ -116,7 +176,10 @@ function setLinkEventHandlers() {
     }
 }
 
+// passing a reference to the functions to be called when event is triggers
 signupBtn.addEventListener('click', signUp)
+loginBtn.addEventListener('click', logIn)
+logOutBtn.addEventListener('click', logOut)
 
 // [Models]
 function User(email, password, name) {
