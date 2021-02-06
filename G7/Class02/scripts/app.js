@@ -21,21 +21,110 @@ const loginError = loginForm.querySelector('#login-error');
 // Signup form
 const signupForm = document.querySelector('#signup-form');
 const signupTitle = signupForm.querySelector('#signup-title');
+const signupName = signupForm.querySelector('#signup-name');
 const signupEmail = signupForm.querySelector('#signup-email');
 const signupPassword = signupForm.querySelector('#signup-password');
 const signupBtn = signupForm.querySelector('#signup-button');
 const signupError = signupForm.querySelector('#signup-error');
+const signupInputs = [signupName, signupEmail, signupPassword];
+
+// Other elements, pages, etc.
+const links = document.querySelectorAll('.link')
 
 // [Data]
-
+let showLoginForm = true;
+const users = [];
 
 // [Functions]
 
+function signUp() {
+    signupError.innerText = '';
+    if (!validateInputs(signupInputs)) {
+        signupError.innerText = 'Please check inputs';
+        // Return to stop the further execution of code
+        return;
+    }
+    // creating the User
+    const user = new User(
+        signupEmail.value,
+        signupPassword.value,
+        signupName.value
+    )
+    // adding the user to the users list
+    users.push(user);
+
+    // cleanup the inputs
+    cleanUpInputs(signupInputs);
+
+    // navigate to the login form
+
+}
+
+function cleanUpInputs(inputs) {
+    for (const input of inputs) {
+        // setting the values to default
+        input.value = '';
+    }
+}
+
+// Determines if an array of inputs is valid or not
+function validateInputs(inputs) {
+    // go over all the inputs
+    for (const input of inputs) {
+        // checking if the value is not empty string, not undefined, not NaN, not null etc.
+        if (!input.value) {
+            // if we find an invalid input, we are stopping the loop
+            return false;
+        }
+    }
+    // if we don't find anything invalid, we are saying that the whole array is valid
+    return true;
+}
+
+// Determine which form should be shown
+function showForm() {
+    if (showLoginForm) {
+        // hide signup, show login
+        changeView(loginForm, signupForm)
+    } else {
+        // hide login, show signup
+        changeView(signupForm, loginForm)
+    }
+}
+
+// Show elements / Hide elements
+function changeView(show, hide) {
+    show.style.display = 'block';
+    hide.style.display = 'none';
+}
+
+// Run the functions that need to be run at the start up of the app
+function init() {
+    showForm();
+    setLinkEventHandlers();
+}
 
 // [Event Handlers]
 
-// [Models]
+function setLinkEventHandlers() {
+    for (const link of links) {
+        link.addEventListener('click', function () {
+            // Show the opposite of whatever is shown at the moment
+            showLoginForm = !showLoginForm;
+            showForm();
+        })
+    }
+}
 
+signupBtn.addEventListener('click', signUp)
+
+// [Models]
+function User(email, password, name) {
+     this.email = email;
+     this.password = password;
+     this.name = name;
+}
 
 // [Initialization]
 
+init();
