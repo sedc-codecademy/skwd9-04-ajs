@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 03 - AJAX/Fetch</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- XMLHttpRequest -->
+    <button id="xmlHttpRequest">Press me if you want to send XMLHttpRequest and get some data</button><br /><br />
+
+    <!-- AJAX -->
+    <button id="ajax">Press me if you want to send request using AJAX and get some data</button><br /><br />
+
+    <ul id="ajaxResult"></ul><br />  
+
+    <!-- Fetch -->
+    <button id="fetch">Press me if you want to send request using Fetch and get some data</button><br /><br />
+
+    <ul id="fetchResult"></ul><br />
+
+    <button id="allPosts">Get all posts</button><br /><br />
+
+    <ul id="allPostsResult"></ul><br />
+
+    <button id="buttonPhotoById">Get photo with id 17</button><br /><br />
+
+    <p id="photoByIdResult"></p><br />
+
+    <h3>Create post</h3>
+    <fieldset>
+        <form>
+            <span>UserId: <input type="number" id="createPostUserId" /></span><br />
+            <span>Title: <input id="createPostTitle" /></span><br />
+            <span>Body: <textarea id="createPostBody"></textarea></span><br />
+
+            <input type="button" value="Create Post" id="createPostButton" />
+        </form>
+    </fieldset>
+    <br /><br />
+
+    <button id="deleteRandomPost">Delete random post</button>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
