@@ -1,0 +1,16 @@
+{
+	"academy": "Code",
+	"trainer": "Peter",
+	"assistant": "Josh",
+	"students": [
+		"Mike",
+		"Samantha",
+		"Greg"
+	],
+	"isActive": true,
+	"numberOfClasses": 48,
+	"options": {
+		"online": true,
+		"workshops": 3
+	}
+}
