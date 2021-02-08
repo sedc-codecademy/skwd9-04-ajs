@@ -39,11 +39,74 @@ let acadmeyJsonToJSObject = JSON.parse(academyJson)
 // request.send();
 
 //jquery AJAX request
+
+// ====THE BAD WAY====
+// $(document).ready(function(){
+//     let button = $("#get-data")
+//     let display = document.getElementById("display")
+
+//     let myObject = {}
+
+//     button.click(function() {
+//         $.ajax({
+//             url: "https://swapi.dev/api/people/4/",
+//             method: "GET",
+//             success: function(response) {
+//                 console.log("success")
+//                 //console.log(typeof(response))
+//                 //console.log(response)
+//                 myObject = response
+//                 console.log(myObject)
+//             },
+//             error: function(response) {
+//                 console.log("error")
+//                 console.log(response)
+//             }
+//         })
+
+//         display.innerHTML = "dsa";
+//         display.innerHTML += `
+//             <p>Name: ${myObject.name}</p>
+//             <p>Height: ${myObject.height}</p>
+//             <p>Homeworld: ${myObject.homeworld}</p>
+//         `;
+//     })
+// })
+
+//====THE OK WAY====
+// $(document).ready(function(){
+//     let button = $("#get-data")
+//     let display = document.getElementById("display")
+
+//     button.click(function() {
+//         $.ajax({
+//             url: "https://swapi.dev/api/people/4/",
+//             method: "GET",
+//             success: function(response) {
+//                 console.log("success")
+//                 //console.log(typeof(response))
+//                 //console.log(response)
+
+//                 display.innerHTML = "";
+//                 display.innerHTML += `
+//                     <p>Name: ${response.name}</p>
+//                     <p>Height: ${response.height}</p>
+//                     <p>Homeworld: ${response.homeworld}</p>
+//                 `;
+//             },
+//             error: function(response) {
+//                 console.log("error")
+//                 console.log(response)
+//             }
+//         })
+
+//     })
+// })
+
+//====THE GOOD WAY====
 $(document).ready(function(){
     let button = $("#get-data")
-    let display = $("#display")
-
-    let myObject = {}
+    let display = document.getElementById("display")
 
     button.click(function() {
         $.ajax({
@@ -53,20 +116,22 @@ $(document).ready(function(){
                 console.log("success")
                 //console.log(typeof(response))
                 //console.log(response)
-                myObject = response
-                console.log(myObject)
+
+                printInfo(display, response)
             },
             error: function(response) {
                 console.log("error")
                 console.log(response)
             }
         })
-
-        display.innerHTML += "";
-        display.innerHTML += `
-            <p>Name: ${myObject.name}</p>
-            <p>Height: ${myObject.height}</p>
-            <p>Homeworld: ${myObject.homeworld}</p>
-        `;
     })
 })
+
+function printInfo(element, response) {
+    element.innerHTML = "";
+    element.innerHTML += `
+        <p>Name: ${response.name}</p>
+        <p>Height: ${response.height}</p>
+        <p>Homeworld: ${response.homeworld}</p>
+    `;
+}
