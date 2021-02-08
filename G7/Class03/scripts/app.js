@@ -71,30 +71,68 @@ const groupOneJson = `{
 
 // AJAX (jQuery)
 
-let codeAcademy;
+// let codeAcademy;
 
-$.ajax({
-    url: "https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/G7/Class03/group-one.json",
-    success: function (response) {
-        console.log('The request succeeded');
-        // console.log(response);
-        // const parsedResponse = JSON.parse(response);
-        // console.log(parsedResponse)
-        codeAcademy = JSON.parse(response);
-        logAcademy();
-    },
-    error: function (error) {
-        console.log('Request has failed')
-        console.log(error.responseText)
-    },
-})
+// $.ajax({
+//     url: "https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/G7/Class03/group-one.json",
+//     success: function (response) {
+//         console.log('The request succeeded');
+//         // console.log(response);
+//         // const parsedResponse = JSON.parse(response);
+//         // console.log(parsedResponse)
+//         codeAcademy = JSON.parse(response);
+//         logAcademy();
+//     },
+//     error: function (error) {
+//         console.log('Request has failed')
+//         console.log(error.responseText)
+//     },
+// })
 
-console.log('All done');
-console.log('GLOBAL', codeAcademy)
+// console.log('All done');
+// console.log('GLOBAL', codeAcademy)
 
-
-function logAcademy() {
-    console.log('INSIDE FUNC', codeAcademy)
-}
+// function logAcademy() {
+//     console.log('INSIDE FUNC', codeAcademy)
+// }
 
 // Fetch
+
+// let codeAcademy;
+
+// const test = function (name) {
+//     console.log('testing', name)
+// }
+
+// test('ivo');
+
+const parseJson = function (response) {
+    if (response.status === 200) {
+        return response.json();
+    } else {
+        throw new Error('request failed')
+    }
+}
+
+const logResponse = function (parsedResponse) {
+    codeAcademy = parsedResponse
+    console.log(parsedResponse)
+}
+
+const handleError = function (error) {
+    console.log(error)
+}
+
+fetch("https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/G5/Class03/group-one.json")
+    .then(parseJson)
+    .then(logResponse)
+    .catch(handleError)
+
+// console.log(codeAcademy)
+
+// Calling my own function
+// logResponse({})
+
+// Using a callback function
+// A reference to a function some other method will call
+// .then(logResponse)
