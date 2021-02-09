@@ -7,7 +7,8 @@ document.getElementById("new-value").addEventListener("click", function () {
 });
 
 let inputValues = [];
-document.getElementById("saveBtn").addEventListener("click", function () {
+document.getElementById("saveBtn").addEventListener("click", function (event) {
+    event.stopPropagation();
     let isValidInputs = true;
     let validationArr = [];
 
