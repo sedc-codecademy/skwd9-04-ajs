@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercises - Arrays, Loops, DOM, Events, Object</title>
+  </head>
+  <body>
+    <div>
+      <h3>DOM</h3>
+      <div id="main" class="myDiv">
+        <h3 id="myTitle">Yeah! Cool page</h3>
+        <p class="myParagraph">
+          This page is really cool. Please don't change anything!
+        </p>
+      </div>
+
+      <div class="myDiv">
+        <p class="myParagraph second">No trust me, dude!</p>
+        <text> See? It has random text! </text>
+      </div>
+
+      <div id="parent">
+        <p class="child-paragraph">child one</p>
+        <p class="child-paragraph">middle child</p>
+        <p class="child-paragraph">last child</p>
+      </div>
+
+      <h5 id="changeH5">This header is not changed at all</h5>
+      <ul id="list"></ul>
+    </div>
+    <br /><br/>
+
+    <div>
+      <h1>Events</h1>
+
+      <fieldset>
+        <form>
+          <span> Username: <input id="usernameInputForm1" /> </span>
+          <br />
+          <span>
+            Comment:
+            <textarea id="commentInputForm1" rows="8" cols="20"></textarea>
+          </span>
+          <br /><br />
+
+          <input type="button" id="buttonInputForm1" value="Submit" />
+          <!-- BAD PRACTICE! -->
+          <!-- <input type="button" id="buttonInputForm1" value="Submit" onclick="buttonInputForm1OnClick()" />  -->
+        </form>
+      </fieldset>
+    </div>
+    <br /><br />
+
+    <div>
+      <h1>DOM Exercises</h1>
+      <div id="DOMExercisesTitleGenerator"></div>
+      <br /><br />
+      <fieldset>
+        <form>
+          <p>Color: <input id="DOMExercises2ColorInput" /></p>
+          <p>Font size: <input id="DOMExercises2FontSizeInput" /></p>
+          <p>Items: <input id="DOMExercises2ItemsInput" /></p>
+
+          <input
+            type="button"
+            id="DOMExercises2Button"
+            value="Generate unordered list"
+          />
+        </form>
+      </fieldset>
+
+      <ul id="DOMExercises2ListResult"></ul>
+    </div>
+    <br /><br />
+    
+    <script src="index.js"></script>
+  </body>
+</html>
