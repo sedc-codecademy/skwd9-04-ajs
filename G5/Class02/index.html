@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Todo list</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class="text-center mt-5">My todo list</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-list-ul"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Insert your tasks...">
+
+                    <!-- Priority list -->
+                    <select name="priority" id="priority" class="ml-2">
+                        <option selected="selected">Choose</option>
+                        <option value="0">Important</option>
+                        <option value="1">Not so important</option>
+                        <option value="2">Can wait till tomorrow</option>
+                    </select>
+                    <button type="button" class="btn btn-primary ml-2">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="todo-list">
+                    <div class="todo">
+                        <p class="todo-text">Go to the bank</p>
+                        <input type="checkbox" id="checkbox" class="checkbox">
+                    </div>
+                    <div class="todo">
+                        <p class="todo-text">Go to the bank</p>
+                        <input type="checkbox" id="checkbox" class="checkbox">
+                    </div>
+                    <div class="todo">
+                        <p class="todo-text">Go to the bank</p>
+                        <input type="checkbox" id="checkbox" class="checkbox">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
