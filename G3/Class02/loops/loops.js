@@ -19,7 +19,7 @@ let number = 0;
 
 // for (let i = 100; i > 0; i-=2) {
 //     console.log(i);
-    
+
 //     // for (let j = 0; j < 10; j++) {
 
 //     // }
@@ -27,16 +27,16 @@ let number = 0;
 
 let arr = ["Mon", "Thu", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-for (let i = 0; i < arr.length; i++) {
-    let element = arr[i];
-}
+// for (let i = 0; i < arr.length; i++) {
+//     let element = arr[i];
+// }
 
-for (let element of arr) {
-    console.log(element);
-}
+// for (let element of arr) {
+//     console.log(element);
+// }
 
-console.log(arr);
+// console.log(arr);
 
-for (let element in arr) {
-    console.log(element);
-}
+// for (let element in arr) {
+//     console.log(element);
+// }
