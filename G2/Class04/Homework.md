@@ -24,3 +24,7 @@ to print the five full names, where the first argument will be a first name and 
 ## Bonus task **
 Try to write a function that finds factorial of a number. **You must use recursion**. Example for factorial:
 factorial of 5 is 5*4*3*2*1, factorial of 3 is 3*2*1, factorial of 1 is 1.
+
+##Contact
+##stojanovskatanja@hotmail.com
+##manasiev.design@gmail.com
