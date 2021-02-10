@@ -74,34 +74,34 @@ let acadmeyJsonToJSObject = JSON.parse(academyJson)
 // })
 
 //====THE OK WAY====
-// $(document).ready(function(){
-//     let button = $("#get-data")
-//     let display = document.getElementById("display")
+$(document).ready(function(){
+    let button = $("#get-data")
+    let display = document.getElementById("display")
 
-//     button.click(function() {
-//         $.ajax({
-//             url: "https://swapi.dev/api/people/4/",
-//             method: "GET",
-//             success: function(response) {
-//                 console.log("success")
-//                 //console.log(typeof(response))
-//                 //console.log(response)
+    button.click(function() {
+        $.ajax({
+            url: "https://swapi.dev/api/people/4/",
+            method: "GET",
+            success: function(response) {
+                //console.log("success")
+                console.log(typeof(response))
+                console.log(response)
 
-//                 display.innerHTML = "";
-//                 display.innerHTML += `
-//                     <p>Name: ${response.name}</p>
-//                     <p>Height: ${response.height}</p>
-//                     <p>Homeworld: ${response.homeworld}</p>
-//                 `;
-//             },
-//             error: function(response) {
-//                 console.log("error")
-//                 console.log(response)
-//             }
-//         })
+                // display.innerHTML = "";
+                // display.innerHTML += `
+                //     <p>Name: ${response.name}</p>
+                //     <p>Height: ${response.height}</p>
+                //     <p>Homeworld: ${response.homeworld}</p>
+                // `;
+            },
+            error: function(response) {
+                console.log("error")
+                console.log(response)
+            }
+        })
 
-//     })
-// })
+    })
+})
 
 //====THE GOOD WAY====
 // $(document).ready(function(){
@@ -137,24 +137,24 @@ function printInfo(element, response) {
 }
 
 //===== request with FETCH, the NEW way ======
-let button = document.getElementById("get-data")
-let display = document.getElementById("display")
+// let button = document.getElementById("get-data")
+// let display = document.getElementById("display")
 
-button.addEventListener("click", function() {
-    fetch("https://swapi.dev/api/people/4/")
-        .then(function(response) {
-            //some code (example: start loader)
-            return response.json()
-        })
-        .then(function(response) {
-            console.log(response)
-            printInfo(display, response)
-        })
-        .catch(function(err) {
-            console.warn(err)
-        })
-        .finally(function() {
-            //some code (example: finish loader)
-            console.log("WE FINALLY DID IT!")
-        })
-})
+// button.addEventListener("click", function() {
+//     fetch("https://swapi.dev/api/people/4/")
+//         .then(function(response) {
+//             //some code (example: start loader)
+//             return response.json()
+//         })
+//         .then(function(response) {
+//             console.log(response)
+//             printInfo(display, response)
+//         })
+//         .catch(function(err) {
+//             console.warn(err)
+//         })
+//         .finally(function() {
+//             //some code (example: finish loader)
+//             console.log("WE FINALLY DID IT!")
+//         })
+// })
