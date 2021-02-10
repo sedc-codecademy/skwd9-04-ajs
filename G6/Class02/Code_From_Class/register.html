@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Login - Register Workshop</h2>
+
+    <div id="register-form" style="margin: 5px; padding: 5px; border: 1px solid black; width: 200px; height: 250px;">
+        <h3>Register</h3>
+
+        <label for="register-username">Username: </label>
+        <input type="text" name="register-username" id="register-username">
+
+        <br>
+
+        <label for="register-passsword">Password: </label>
+        <input type="password" name="register-password" id="register-password">
+
+        <br>
+        
+        <p id="register-display"></p>
+
+        <br>
+        <br>
+
+        <button id="register">Register</button>
+    </div>
+
+    <br>
+    <br>
+
+    <div id="login-form" style="margin: 5px; padding: 5px; border: 1px solid black; width: 200px; height: 250px;">
+        <h3>Log In</h3>
+
+        <label for="login-username">Username: </label>
+        <input type="text" name="login-username" id="login-username">
+
+        <br>
+
+        <label for="login-passsword">Password: </label>
+        <input type="password" name="login-password" id="login-password">
+
+        <br>
+        
+        <p id="login-display"></p>
+
+        <br>
+        <br>
+
+        <button id="login">Log In</button>
+    </div>
+    <button id="login-opt">Log In</button>
+    <button id="reg-opt">Register</button>
+    <button id="logout">Log Out</button>
+
+
+    <h2 id="user-display"></h2>
+
+    <div id="adminPanel">
+        <h3>Admin Panel</h3>
+        <ol id="registeredUsers"></ol>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="registerApp.js"></script>
+</body>
+</html>
