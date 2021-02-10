@@ -175,3 +175,106 @@ let isTheSunUp = false;
 
 // console.log(`Time of day is ${isTheSunUp ? 'day' : 'night'}`);
 
+// [Recursion]
+
+// function sumTo(num) {
+//     console.log(num)
+//     if (num === 0) {
+//         return 0;
+//     }
+//     return num + sumTo(num - 1)
+// }
+// console.log(sumTo(5))
+
+const carlJames = {
+    name: 'Carl',
+    children: [
+        {
+            name: 'Jack',
+            children: []
+        },
+        {
+            name: 'Mike',
+            children: [
+                {
+                    name: 'David',
+                    children: [
+                        {
+                            name: 'Sara',
+                            children: []
+                        }
+                    ]
+                },
+                {
+                    name: 'Michele',
+                    children: [
+                        {
+                            name: 'Clara',
+                            children: [
+                                {
+                                    name: 'Jessica',
+                                    children: []
+                                },
+                                {
+                                    name: 'Josh',
+                                    children: []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+// Flatting an array
+
+// const getDescendants = person => {
+//     let descendants = [];
+//     for (const child of person.children) {
+//         descendants.push(child.name)
+//         if (child.children.length) {
+//             let childrenNames = getDescendants(child);
+//             for (const childName of childrenNames) {
+//                 descendants.push(childName)
+//             }
+//             // descendants.push(...getDescendants(child))
+//         }
+//     }
+//     return descendants;
+// }
+
+// console.log(getDescendants(carlJames));
+
+// [Scope]
+
+// [Function scope]
+
+// function getFullName(firstName, lastName) {
+//     var result = `${firstName} ${lastName}`
+//     console.log('INSIDE FUNC', result)
+// }
+
+// getFullName('John', 'Snow')
+
+// console.log('OUTSIDE FUNC', result)
+
+// [Block scope]
+
+function getFullName(firstName, lastName) {
+    if (firstName.length > 1 && lastName.length > 1) {
+        let blockResult = `${firstName} ${lastName}`;
+        var functionalScope = `${firstName} ${lastName}`;
+
+        console.log('INSIDE IF, INSIDE FUNC LET', blockResult)
+        console.log('INSIDE IF, INSIDE FUNC VAR', functionalScope)
+    }
+    // console.log('OUTSIDE IF, INSIDE FUNC LET', blockResult)
+    console.log('OUTSIDE IF, INSIDE FUNC VAR', functionalScope)
+}
+
+getFullName('John', 'Snow')
+
+// console.log('OUTSIDE IF, OUTSIDE FUNC LET', blockResult)
+console.log('OUTSIDE IF, OUTSIDE FUNC VAR', functionalScope)
