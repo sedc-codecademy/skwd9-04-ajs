@@ -65,3 +65,113 @@
 // 1 and 2 are ARGUMENTS
 // sum(1, 2)
 
+// [Anonymous functions]
+
+// Anonymous functions in a variable
+// const greeting = function (name) {
+//     return `Hello ${name}`;
+// }
+
+// the variable becomes a function
+// console.log(greeting('John'));
+
+// Anonymous function in an event listener
+// const button = document.querySelector('button');
+// button.addEventListener('click', function () {
+//     console.log('button clicked')
+// })
+
+// [Arrow Functions]
+
+// Anonymous function
+// const logSomething = function () {
+//     console.log('Something logged')
+// }
+
+// logSomething();
+
+// Arrow function
+// const logSomething = () => console.log('Something logged');
+
+// logSomething();
+
+// const sumWithTen = function (num) {
+//     return num + 10;
+// }
+
+// console.log(sumWithTen(5));
+
+// => is same as return
+// const sumWithTen = (num) => num + 10;
+// console.log(sumWithTen(5));
+
+// only one parameter
+// const sumWithTen = num => num + 10;
+// console.log(sumWithTen(5));
+
+// with two parameters
+// const sum = (num1, num2) => num1 + num2;
+// console.log(sum(1,2))
+
+// Multiline arrow function
+// const sumAndLogFunction = function (num1, num2) {
+//     let result = num1 + num2;
+//     console.log(result);
+//     return result;
+// }
+
+// sumAndLogFunction(1, 2);
+
+// const sumAndLogFunction = (num1, num2) => {
+//     let result = num1 + num2;
+//     console.log(result)
+//     return result;
+// }
+
+// sumAndLogFunction(1, 2)
+
+// const btn = document.querySelector('button');
+// btn.addEventListener('click', () => console.log('Button clicked'))
+
+// [Self invoked function]
+
+// const sayHello = function(name) {
+//     console.log(`Hello there ${name}!`)
+// }
+// const sayHelloArrow = name => console.log(`Hello there ${name}!`);
+// sayHello("Bob"); // calling of anonymous function
+
+// (function (name) { console.log(`Hello there ${name}`) })('Ivo')
+
+// (name => console.log(`Hello there ${name}`))('Ivo')
+
+// ((fName, lName) => console.log(`Hello there ${fName} ${lName}`))('Ivo', 'Kostovski')
+
+// const fullName = ((firstName, lastName) =>
+//                                  `${firstName} ${lastName}`)('Ivo', 'Kostovski')
+// console.log(fullName);
+
+// [Ternary operator]
+
+let timeOfDay = '';
+let isTheSunUp = false;
+
+// plain if else statement
+
+// if (isTheSunUp) {
+//     timeOfDay = 'day';
+// } else {
+//     timeOfDay = 'night';
+// }
+
+// console.log(timeOfDay);
+
+// with ternary operator
+//        if     if true      else      if false
+// isTheSunUp ? timeOfDay = 'day' : timeOfDay = 'night';
+// console.log(timeOfDay)
+
+// timeOfDay = isTheSunUp ? 'day' : 'night';
+
+// console.log(`Time of day is ${isTheSunUp ? 'day' : 'night'}`);
+
