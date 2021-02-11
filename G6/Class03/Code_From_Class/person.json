@@ -1,0 +1,23 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "address": {
+    "street": "John Doe's street",
+    "number": 1000
+  },
+  "age": 50,
+  "isAlcoholic": false,
+  "friends": [
+    {
+      "firstName": "Bob",
+      "lastName": "Bobsky",
+      "age": 22,
+      "isAlcoholic": true,
+      "adress": {
+        "street": "Bob Bosky's street",
+        "number": 222
+      },
+      "friends": []
+    }
+  ]
+}
