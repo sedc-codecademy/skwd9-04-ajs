@@ -1,0 +1,19 @@
+{
+    "users": [
+        {
+            "name": "Ivan",
+            "age": 26,
+            "profession": "Web Developer"
+        },
+        {
+            "name": "Martin",
+            "age": 27,
+            "profession": "Web Developer"
+        },
+        {
+            "name": "Dejan",
+            "age": 26,
+            "profession": "Student"
+        }
+    ]
+}
