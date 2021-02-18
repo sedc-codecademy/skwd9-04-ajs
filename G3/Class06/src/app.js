@@ -2,19 +2,50 @@ let navigationService = {
     // properties
     peopleBtn: document.getElementById("peopleBtn"),
     shipsBtn: document.getElementById("shipsBtn"),
-
+    nextBtn: document.getElementById("nextBtn"),
+    prevBtn: document.getElementById("prevBtn"),
+    currentPage: 1,
 
     // methods/functions
     init: function () {
         this.peopleBtn.addEventListener("click", function () {
             console.log("Hello from people");
+            navigationService.currentPage = 1;
             uiService.toggleLoader(true);
-            starWarsService.getPeople();
+            starWarsService.getPeople(navigationService.currentPage);
         });
         
         this.shipsBtn.addEventListener("click", function () {
             console.log("Hello from ships");
         });
+
+        this.nextBtn.addEventListener("click", function () {
+            console.log("Hello from next");
+            uiService.toggleLoader(true);
+            navigationService.currentPage += 1;
+            starWarsService.getPeople(navigationService.currentPage);
+            console.log(navigationService.currentPage);
+        });
+
+        this.prevBtn.addEventListener("click", function () {
+            console.log("Hello from prev");
+            uiService.toggleLoader(true);
+            navigationService.currentPage -= 1;
+            starWarsService.getPeople(navigationService.currentPage);
+        });
+    },
+    togglePagingButtons: function (response) {
+        if (response.next === null) {
+            this.nextBtn.style.display = "none";
+        } else {
+            this.nextBtn.style.display = "block";
+        }
+
+        if (response.previous === null) {
+            this.prevBtn.style.display = "none";
+        } else {
+            this.prevBtn.style.display = "block";
+        }
     }
 }
 
@@ -23,14 +54,15 @@ let starWarsService = {
     baseUrl: "https://swapi.dev/api/",
     
     // methods/functions
-    getPeople: function () {
-        let peopleUrl = `${this.baseUrl}people/`;
+    getPeople: function (page) {
+        let peopleUrl = `${this.baseUrl}people/?page=${page}`;
         $.ajax({
             url: peopleUrl,
             success: function (response) {
                 console.log("Request success");
                 console.log(response);
                 uiService.displayPeopleInfo(response.results);
+                navigationService.togglePagingButtons(response);
                 uiService.toggleLoader(false);
             },
             error: function (error) {
