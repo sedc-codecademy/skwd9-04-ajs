@@ -50,6 +50,13 @@ let multiply = (first, second) => first * second;
 let division = (first, second) => first / second;
 
 
+
+// IIFE - Immediately invoked function expression
+(function sayGoodbye(person) {
+    return `Goodbye ${person}`;
+})('John');
+
+
 // [Recursion - When a function is invoked by itself]
 function factorial(num) {
     if (num === 0) {
@@ -57,5 +64,14 @@ function factorial(num) {
     }
     return num * factorial(num - 1);
 }
+
 console.log(factorial(5));
 
+
+// This is what happens in the factorial function
+// factorial(5)
+// factorial(4)
+// factorial(3)
+// factorial(2)
+// factorial(1)
+// factorial(0)
