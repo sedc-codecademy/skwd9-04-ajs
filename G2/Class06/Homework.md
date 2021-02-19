@@ -9,6 +9,8 @@ Now answer the following requirements:
 * Find the name and price of all products with name starting with a vowel, that are not on discount.
 * Sort the products by price, ascending, without changing the original array.
 
+Use higher order functions to find the answers.
+
 # Homework 2
 There is a JSON file with students. Make a call to the file and extract the following data from it: 
 * All students with an average grade higher than 3
@@ -17,7 +19,7 @@ There is a JSON file with students. Make a call to the file and extract the foll
 * The average grades of all female students over the age  of 24
 * All male students with a name starting with B and average grade over 2
 
-Use higher order functions to find the answers
+Use higher order functions to find the answers.
 **Link:** https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/Samples/students_v2.json
 
 ## Contact

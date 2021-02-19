@@ -1,3 +1,4 @@
+'use strict';
 // Functions as first class citizens
 
 // Stored in variable
@@ -53,18 +54,18 @@ let multiplyTwoNumbers = calculator(20, 20, multiply);
 
 // used as a return value from another function
 
-let someFunction = () => 10 + 10;
+// let someFunction = () => 10 + 10;
 
-function getSomeFunction() {
-    return someFunction;
-}
+// function getSomeFunction() {
+//     return someFunction;
+// }
 
 // let functionReference = getSomeFunction();
 // functionReference();
 
 // WILD SYNTAX
 // let result = () => 10 + 10 // WITHOUT ()()
-let result = getSomeFunction()(); // someFunction // someFunction() => 20
+// let result = getSomeFunction()(); // someFunction // someFunction() => 20
 // console.log(result);
 
 // Functions with properties and methods
@@ -192,7 +193,7 @@ function printStudentInfo(student) {
 // REDUCE
 
 // let students = [
-//     { firstName: 'Goce', grade: 3 },
+//     { firstName: 'Goce', grade: 6 },
 //     { firstName: 'Gordon', grade: 5 },
 //     { firstName: 'John', grade: 2 },
 //     { firstName: 'Bob', grade: 5 }
@@ -208,8 +209,111 @@ function sumGrades(sum, student) {
 
 // REQUIRES FIRST ARGUMENT FUNCTION, AND SECOND ARGUMENT INITAL VALUE!!!
 
-let totalSumOfGrades = students.reduce(sumGrades, 0)
-console.log(totalSumOfGrades)
+// let totalSumOfGrades = students.reduce(sumGrades, 0)
+// console.log(totalSumOfGrades)
+
+// SORT => modifies original array
+
+let numbers = [1, 6, 3, 20, 5, 4]; // ADDRESS: JKASHDJKASHDASJKFHKASJFHASJKHFKJASFH
+
+// If we dont want default behaviour (to not set 20 before 3)
+
+// numbers.sort((number1, number2) => number1 - number2);
+// console.log(numbers)
+
+// let strings = ["goce", 1, "Gordon", 22, "bob", "john"];
+
+function sortByGrade(student1, student2) {
+    return student1.grade - student2.grade
+}
+
+// students.sort(sortByGrade);
+
+// SORT BY ASC ORDER
+
+// students.sort((student1, student2) => student1.grade - student2.grade);
+
+// SORT BY DESC ORDER
+
+// students.sort((student1, student2) => student2.grade - student1.grade);
+
+// console.log('AFTER SORTING', students);
+
+
+// STORING THE ADDRESS OF THE ARRAY THAT LIVES IN THE MEMORY, ALSO STORED IN NUMBERS
+// let numbers1 = numbers;
+
+// numbers1.sort()
+
+// console.log("NUMBERS", numbers);
+// console.log("NUMBERS1", numbers1);
+
+// let numbers1 = [];
+
+// numbers.forEach(number => numbers1.push(number));
+
+// numbers1.sort();
+
+// console.log(numbers1, numbers);
+
+// ES6 => DESTRUCTURING
+
+let numbers1 = [...numbers, 50]; // [1, 6, 3, 20, 5, 4, 50]
+
+// numbers1.sort();
+
+// console.log(numbers1, numbers);
+
+
+
+//Functions arguments
+
+function someFunction(name1, name2) {
+    // console.log(arguments)
+    // console.log(arguments[0]) // first argument
+    // console.log(arguments[1]) // second argument
+    // console.log(arguments[2]) // third argument
+    // console.log(arguments[3]) // fourth argument
+
+    let longest = '';
+
+    for (let i = 0; i < arguments.length; i++) {
+        if (arguments[i].length > longest.length) {
+            longest = arguments[i]
+        }
+    }
+
+    // will not work => exception thrown
+    // arguments.forEach(argument => {
+    //     if (argument.length > longest.length) {
+    //         longest = argument
+    //     } 
+    // }) 
+    console.log(longest);
+}
+
+// someFunction("Goce", "Gordon", "Bob", "John");
+
+
+// STRICT TYPING IN JAVASCRIPT
+
+// number = 10; => no declaration, exception thrown
+
+// let person = { age: 10 };
+// delete person;
+
+// function saySomething(firstName, firstName) {
+//     console.log(firstName);
+// }
+
+// saySomething("John", "Bob");
+
+let arguments = "arguments";
+console.log(arguments);
+
+
+
+
 
 
 
