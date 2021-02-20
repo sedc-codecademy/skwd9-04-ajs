@@ -29,7 +29,7 @@ console.log("Result callback function", result);
 let students = [
     { firstName: "Natasha", lastName: "Paneva", grade: 10, age: 23 },
     { firstName: "Darko", lastName: "Panchevski", grade: 7, age: 25 },
-    { firstName: "Test", lastName: "Test", grade: 1, age: 19 },
+    { firstName: "George", lastName: "Dimitrov", grade: 10, age: 26 },
     { firstName: "Pero", lastName: "Perovski", grade: 5, age: 35 },
     { firstName: "Blazo", lastName: "Blazovski", grade: 6, age: 99 }
 ];
@@ -90,7 +90,8 @@ function first(callback) {
     console.log("First thing");
 	setTimeout(()=>{
         console.log("Log within setTimeout()");
-		callback();
+        if(callback) 
+          callback();
 	}, 2500);
 }
 
@@ -126,11 +127,13 @@ function makeCall(url, callbackFunction){
       .then(res => res.json())
       .then(response => {
               console.log('The request succeeded!');
-              callbackFunction(response);
+              if (callbackFunction)
+                callbackFunction(response);
       })
       .catch(error => {
               console.log('The request failed!');
-              callbackFunction(response.responseText);
+              if (callbackFunction)
+                callbackFunction(error);
       })
   }
   
