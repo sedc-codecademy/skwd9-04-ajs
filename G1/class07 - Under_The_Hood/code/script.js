@@ -29,7 +29,6 @@ function three() {
      }, 3000)
  }
 
-
 // ---- setInterval ----
 // used for repeating code upon a given amount of time
 // two parameters: 1st is a function that will repeat over some amount of time, 2nd is the time that fuction will repeat in ms 
@@ -76,11 +75,10 @@ function second() {
 
 // first(second)
 
-
-
+// making an ajax call without and with callback
 $(document).ready(function() {
     
-    // making an ajax call without callback
+    //without
     // function makeCall(url) {
     //     $.ajax({
     //         url: url,
@@ -98,8 +96,8 @@ $(document).ready(function() {
     // }
 
     //print(makeCall("https://jsonplaceholder.typicode.com/users"))
-    
-    // making an ajax call with callback
+
+    // with
     function makeCall(url, callback) {
         $.ajax({
             url: url,
