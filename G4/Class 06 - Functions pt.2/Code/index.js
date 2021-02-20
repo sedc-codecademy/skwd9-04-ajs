@@ -201,3 +201,99 @@ students
 //         .filter(x => x.age >= 30 && x.grade > 5)
 //         .map(x => x)
 // )
+
+// Reduce
+
+// Without HOF
+let sumVariable = 0;
+
+for (const number of numbers) {
+    sumVariable += number;
+}
+
+console.log("Result of sum variable", sumVariable); // 376
+
+// With HOF
+// let numbers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144];
+// a = 0, c = 0 -> a = 0
+// a = 0, c = 1 -> a = 1
+// a = 1, c = 1 -> a = 2
+// a = 2, c = 2 -> a = 4
+// a = 4, c = 3 -> a = 7
+// ...
+// a = 232, c = 144 -> a = 376
+console.log("Using reduce with initial value of the accumulator",
+    numbers.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue;
+    }, 0)
+)
+
+
+// Same result as above less code
+// a = 0, c = 1 -> a = 1
+// a = 1, c = 1 -> a = 2
+// a = 2, c = 2 -> a = 4
+// a = 4, c = 3 -> a = 7
+// ...
+// a = 232, c = 144 -> a = 376
+console.log("Using reducer", 
+    numbers.reduce(
+        (accumulator, currentValue) => {
+            return accumulator + currentValue;
+        }
+    )
+)
+
+// let students = [
+//     { firstName: "Natasha", lastName: "Paneva", grade: 10, age: 23 },
+//     { firstName: "Darko", lastName: "Panchevski", grade: 7, age: 25 },
+//     { firstName: "Test", lastName: "Test", grade: 1, age: 19 },
+//     { firstName: "Pero", lastName: "Perovski", grade: 5, age: 35 },
+//     { firstName: "Blazo", lastName: "Blazovski", grade: 6, age: 99 }
+// ];
+
+// Result
+// a = "", c = { firstName: "Natasha", lastName: "Paneva", grade: 10, age: 23 } -> a = "Natasha Paneva, "
+// a = "Natasha Paneva, ", c = { firstName: "Darko", lastName: "Panchevski", grade: 7, age: 25 }, -> a = "Matasha Paneva, Darko Panchevski, "
+// ...
+// a = "Natasha Paneva, Darko Panchevski, Test Test, Pero Perovski, ", c ={ firstName: "Blazo", lastName: "Blazovski", grade: 6, age: 99 } -> a = "Natasha Paneva, Darko Panchevski, Test Test, Pero Perovski, Blazo Blazovski."
+console.log("All students",
+      students.reduce((accumulator, currentValue, index) => {
+        if (index === students.length - 1) {
+            return accumulator + " " + currentValue.firstName + " " + currentValue.lastName + ".";
+        }
+        else {
+            return accumulator + " " + currentValue.firstName + " " + currentValue.lastName + ", ";
+        }
+      }, "")  
+)
+
+// .sort()
+let unsorted = [10, 15, 9, 2, 4, 23, 1, 0, 8];
+
+// Without HOF
+function bubbleSort(array) {
+    for (let indexFirst = 0; indexFirst < array.length; indexFirst++) { // Complexity O(n)
+        for (let indexSecond = indexFirst + 1; indexSecond < array.length; indexSecond++) { // Complexity O(n)
+            if (array[indexFirst] > array[indexSecond]) {
+                let temp = array[indexFirst];
+                array[indexFirst] = array[indexSecond];
+                array[indexSecond] = temp;
+            }
+        }
+    }
+
+    return array;
+}
+
+console.log(bubbleSort(unsorted));
+
+// With HOF
+console.log(unsorted.sort((a, b) => a - b)); // Ascending
+console.log(unsorted.sort((a, b) => b - a)); // Descending
+
+let sortByNameAsc = (student1, student2) => (student1.firstName).localeCompare(student2.firstName) // Ascending
+let sortByNameDesc = (student1, student2) => (student2.firstName).localeCompare(student1.firstName) // Descending
+
+// console.log(students.sort(sortByNameAsc));
+console.log(students.sort(sortByNameDesc));
