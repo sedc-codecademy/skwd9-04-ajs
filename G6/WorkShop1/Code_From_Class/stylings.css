@@ -1,0 +1,44 @@
+body {
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+    background-color: black;
+}
+
+.medium {
+    height: 10em;
+}
+
+.center {
+    display: block;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 5em;
+}
+
+.container > .card {
+    width: 15rem;
+    background-color: yellow;
+    border-radius: 20px;
+    padding: 20px 0;
+}
+.active-card {
+    background-color: greenyellow !important;
+}
+.container > .card:hover {
+    cursor: pointer;
+    background-color: yellowgreen;
+}
+.spinner {
+    height: 10vh;
+    display: none;
+}
+
+.result {
+    padding: 0 50px;
+}
