@@ -158,3 +158,39 @@ fetch("https://raw.githubusercontent.com/sedc-codecademy/sedc7-04-ajs/master/g2/
     .then(response => showDocuments(response))
     .catch(error => console.warn(error))
     .finally(() => console.log("DONE!"))
+
+function Document(name, type) {
+    this.name = name,
+    this.type = type
+}
+
+let mapObject = (array) => {
+    return array.map(doc => new Document(doc.name, doc.type))
+}
+
+// ---- ASYNC/AWAIT ----
+async function getDataAsync() {
+    let response = await fetch("https://raw.githubusercontent.com/sedc-codecademy/sedc7-04-ajs/master/g2/Class7/documents.json")
+    let realData = await response.json()
+
+    if(realData.length < 1) {
+        throw new Error("something bad has happend!")
+    }
+
+    console.log("this is the real data", realData)
+
+    let filteredData = await getImportantDocuments(realData) //filtering
+    console.log("this is the filtered data", filteredData)
+
+    let mappedData = mapObject(filteredData) // mapping
+    console.log("this is the mapped data", mappedData) 
+
+    mappedData.forEach(doc => console.log(`${doc.name} - ${doc.type}`))
+}
+
+try {
+    getDataAsync()
+}
+catch(error) {
+    console.log(error)
+}
