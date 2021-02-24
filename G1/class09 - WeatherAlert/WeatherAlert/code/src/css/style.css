@@ -1,0 +1,20 @@
+#pages .page {
+    display: none;
+    text-align: center;
+}
+
+#pages .page:first-child {
+    display: block;
+}
+
+body {
+    background-image: url("../img/background.jpg");
+    height: 100%;
+	background-position: initial;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.table {
+    background-color: rgba(255, 255, 255, 0.6);
+}
