@@ -56,12 +56,63 @@ function second() {
 }
 
 
-first(5000)
-.then(data => {
-    console.log('We get the data!');
-    console.log(data);
-    second();
+// first(1000)
+// .then(data => {
+//     console.log('We get the data!');
+//     console.log(data);
+//     second();
+// })
+// .catch(err => {
+//     console.log('ERROR: ' + err);
+// })
+// .finally(() => console.log(`Everything is done in ${Math.round(performance.now())} ms`));
+
+
+
+isParentHappy = true;
+
+let willIGetNewPhone = new Promise((resolve, reject) => {
+    if(isParentHappy) {
+        let phone = {
+            brand: 'Samsung',
+            color: 'Perl white'
+        }
+        resolve(phone);
+    } else {
+        let reason = 'Parent is not happy :(';
+        reject(reason);
+    }
 })
-.catch(err => {
-    console.log('ERROR: ' + err);
-})
+
+let showOff = (phone) => {
+    let message = 'Hey friend I have a new ' + phone.brand;
+    return Promise.resolve(message);
+}
+
+let friendCryForNewPhone = () => {
+    let message = 'Heey! My friend just got new Samsung phone! I want Samsung as well!';
+    return Promise.resolve(message);
+}
+
+let askParent = () => {
+    willIGetNewPhone
+    .then(data => {
+        console.log('My promise is fulfilled');
+        // console.log(data);
+        return showOff(data);
+    })
+    .then(message => {
+        console.log(message);
+        return friendCryForNewPhone();
+    })
+    .then(cryMessage => {
+        console.log(cryMessage);
+    })
+    .catch(err => {
+        console.log('Unfortunately ' + err);
+    })
+}
+
+askParent();
+
+
