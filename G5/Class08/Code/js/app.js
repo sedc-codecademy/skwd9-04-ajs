@@ -40,7 +40,7 @@ function complex() {
 
 function first(workTime) {
     return new Promise((resolve, reject) => {
-        if(workTime <= 0) {
+        if (workTime <= 0) {
             reject('The working time must be greater than zero!');
         }
         else {
@@ -72,7 +72,7 @@ function second() {
 isParentHappy = true;
 
 let willIGetNewPhone = new Promise((resolve, reject) => {
-    if(isParentHappy) {
+    if (isParentHappy) {
         let phone = {
             brand: 'Samsung',
             color: 'Perl white'
@@ -96,23 +96,114 @@ let friendCryForNewPhone = () => {
 
 let askParent = () => {
     willIGetNewPhone
-    .then(data => {
-        console.log('My promise is fulfilled');
-        // console.log(data);
-        return showOff(data);
-    })
-    .then(message => {
-        console.log(message);
-        return friendCryForNewPhone();
-    })
-    .then(cryMessage => {
-        console.log(cryMessage);
-    })
-    .catch(err => {
-        console.log('Unfortunately ' + err);
+        .then(data => {
+            console.log('My promise is fulfilled');
+            // console.log(data);
+            return showOff(data);
+        })
+        .then(message => {
+            console.log(message);
+            return friendCryForNewPhone();
+        })
+        .then(cryMessage => {
+            console.log(cryMessage);
+        })
+        .catch(err => {
+            console.log('Unfortunately ' + err);
+        })
+}
+
+// askParent();
+
+
+
+
+// Function for getting the documents
+const getDocuments = (url) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function (data) {
+                resolve(JSON.parse(data));
+            },
+            error: function (err) {
+                reject(err);
+            }
+        })
     })
 }
 
-askParent();
+const checkDocuments = (documents) => {
+    if (!documents || typeof (documents) != 'object') {
+        throw new Error('Problem with documents!');
+    }
+    if (documents.length === 0) {
+        throw new Error('There are no documents at all!');
+    }
+
+    // only for demo purpose to provoke error on purpose
+    // uncomment only if you want to force an Error and see how the catch block will catch itx
+    // if (documents.length > 3) {
+    //     throw new Error('There are too many docs to show! Slow connection!');
+    // }
+}
+
+const getImportantDocuments = (documents) => {
+    const filteredDocs = documents.filter(doc => doc.important);
+    return new Promise((resolve, reject) => {
+        if (filteredDocs.length === 0) {
+            reject('There are no important docs!');
+        } else {
+            setTimeout(() => {
+                resolve(filteredDocs);
+            }, 3000)
+        }
+    })
+}
+
+const showDocuments = (documents) => {
+    documents.forEach(doc => {
+        console.log(`Name: ${doc.name} | Type: ${doc.type} | Size: ${doc.size} MB | Important: ${doc.important}`);
+    })
+}
 
 
+// fetch('https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/G5/Class08/Code/api/documents.json')
+// .then(docs => console.log(docs))
+// .catch(err => console.log(err));
+
+// getDocuments('https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/G5/Class08/Code/api/documents.json')
+//     .then(docs => {
+//         checkDocuments(docs);
+//         return getImportantDocuments(docs);
+//     })
+//     .then(importantDocs => {
+//         showDocuments(importantDocs);
+//     })
+//     .catch(err => console.log(err.message))
+//     .finally(() => console.log(`Everything is done in ${Math.round(performance.now())} ms`));
+
+// console.log('This is regular code!');
+
+
+// Async/Await
+
+const url = 'https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/G5/Class08/Code/api/documents.json';
+
+async function showImportantDocs() {
+
+    try 
+    {
+        let documents = await getDocuments(url);
+        checkDocuments(documents);
+        let importantDocs = await getImportantDocuments(documents);
+        showDocuments(importantDocs);
+        console.log(`Everything is done in ${Math.round(performance.now())} ms`);
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+}
+
+showImportantDocs();
