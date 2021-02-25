@@ -9,9 +9,14 @@ function first(worktime) {
     });
 }
 
+function second() {
+    console.log("second thing!");
+}
+
 first(1000)
     .then(data => {
         console.log(data);
+        second();
     })
     .catch(error => console.log(`ERROR: ${error}`))
     .finally(() => console.log(`Everything is done at: ${new Date()}`));

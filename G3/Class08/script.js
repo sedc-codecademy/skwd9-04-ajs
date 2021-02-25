@@ -27,3 +27,43 @@ function callbackHell() {
 // callbackHell();
 // console.log("after callbackHell");
 
+let delay = function (ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let random = Math.random() < 0.9;
+            return random ? resolve() : reject("You have bad luck");
+            // resolve();
+        }, ms);
+    });
+}
+
+console.log("zero");
+delay(1000)
+    .then(() => {
+        console.log("one");
+        return delay(1000);
+    })
+    .then(() => {
+        console.log("two");
+        return delay(1000);
+    })
+    .then(() => {
+        console.log("three");
+        return delay(1000);
+    })
+    .then(() => {
+        console.log("four");
+        return delay(1000);
+    })
+    .then(() => {
+        console.log("five");
+        return delay(1000);
+    })
+    .then(() => {
+        console.log("six");
+        return delay(1000);
+    })
+    .then(() => {
+        console.log("last");
+    })
+    .catch(error => console.log(error));
