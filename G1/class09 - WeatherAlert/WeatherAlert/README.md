@@ -32,4 +32,4 @@ The web page should be:
 7. The person sees the hourly weather in the table 
 8. The person wants to see who made this app
 9. Clicks on the About link
-10. Immediately the view changes to the about view ( without loading the app again )
+10. Imeditely the view changes to the about view ( without loading the app again )
