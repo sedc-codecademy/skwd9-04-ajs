@@ -69,13 +69,13 @@ let majlo = new Dog("Majlo", "black", 10, [new Food("Chicken breasts", "yellow")
 
 // this keyword
 
-console.log(this) // points to the window object
+// console.log(this) // points to the window object
 
 function whatIsThis() { // points to the window object
     console.log(this)
 }
 
-whatIsThis()
+// whatIsThis()
 
 let testObj = {
     whatIsThis: this,
@@ -84,5 +84,18 @@ let testObj = {
     }
 }
 
-console.log(testObj.whatIsThis)
-testObj.whatIsThisMethod()
+// console.log(testObj.whatIsThis)
+// testObj.whatIsThisMethod()
+
+
+function ThisTemplate() {
+    console.log(this)
+    this.whatIsThis = this
+}
+
+ThisTemplate()
+
+let template = new ThisTemplate()
+
+console.log(template)
+console.log(template.whatIsThis)
