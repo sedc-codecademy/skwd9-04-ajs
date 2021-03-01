@@ -42,3 +42,12 @@ body {
 .result {
     padding: 0 50px;
 }
+
+#pagination {
+    display: none;
+    justify-content: center;
+}
+
+#next {
+    margin-left: 20px;
+}
