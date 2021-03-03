@@ -15,7 +15,7 @@ function createPerson(person) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             people.push(person)
-            const error = false;
+            const error = 'ERROR OCCURED';
             if (!error) {
                 resolve()
             } else {
@@ -38,11 +38,15 @@ function getPlanetResidentsByPlanet() {
     fetch("https://swapi.dev/api/planets/1")
         .then(res => res.json())
         .then(planet => {
+
+            // Advance implementation
+            // let promises = planet.residents.map(residentUrl => fetch(residentUrl).then(res => res.json()))
+
             let promises = [];
             planet.residents.forEach(residentUrl => {
                 promises.push(fetch(residentUrl).then(res => res.json()))
             })
-            Promise.all(promises).then(people => console.log(people));
+            Promise.all(promises).then(people => renderPeople(people));
         })
 }
 
