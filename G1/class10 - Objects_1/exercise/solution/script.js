@@ -11,6 +11,9 @@ function Academy(name, students, subjects, start, end) {
     this.printSubjects = function() {
         this.subjects.forEach(subject => console.log(subject))
     };
+    this.updateNumberOfClasses = function() {
+        this.numberOfClasses = this.subjects.reduce((result, subject) => result += subject.numberOfClasses, 0)
+    }
 }
 
 function Subject(title, isElective, academy, students) {
@@ -54,3 +57,22 @@ function Student(firstName, lastName, age) {
         }
     }
 }
+
+let bjs = new Subject("basic javascript", false, new Academy("SEDC", [], [], "10/10/2020", "10/12/2021"), [])
+let html = new Subject("html and css", false, new Academy("SEDC", [], [], "10/10/2020", "10/12/2021"), [])
+html.overrideClasses(5)
+bjs.overrideClasses(9)
+
+// console.log(html)
+
+let sedc = new Academy("SEDC", [], [bjs, html], "10/10/2020", "10/12/2021")
+sedc.updateNumberOfClasses()
+//console.log(sedc)
+
+let viktor = new Student("Viktor", "Jakovlev", 31)
+viktor.startAcademy(sedc)
+
+viktor.startSubject(html)
+viktor.startSubject(bjs)
+
+console.log(viktor)
