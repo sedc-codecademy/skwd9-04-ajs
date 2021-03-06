@@ -1,7 +1,7 @@
 # Homework
 ## Task 1
 Create a Person constructor function that has:
-*id
+* id
 * firstName
 * lastName
 * age
