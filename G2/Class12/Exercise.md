@@ -14,4 +14,4 @@
  
 * create a setter and getter for the type property. The setter/getter will log a corresponding message. The setter should do validation.
  
-## Add class Dog, that inherits from Animal. It should have property color and method bark that says "BARK BARK". Create object, call the method bark, eat and print the size of the dog.
+Add class Dog, that inherits from Animal. It should have property color and method bark that says "BARK BARK". Create object, call the method bark, eat and print the size of the dog.
