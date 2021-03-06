@@ -25,8 +25,6 @@ let navService = {
         this.searchBtn.addEventListener("click", function(event) {
             event.preventDefault()
             weatherService.city = navService.navSearch.value
-
-
             apiLimiterService.setLimiter(5)
             apiLimiterService.shouldBlockCalls 
                 ? alert("the limit is exceeded!")
@@ -262,7 +260,6 @@ let helperService = {
         return new Date(unixTimeStamp * 1000)
     }
 }
-
 
 navService.registerNavListeners()
 pagingService.registerPagingListeners()
