@@ -1,6 +1,7 @@
 # Homework
 ## Task 1
 Create a Person constructor function that has:
+* id
 * firstName
 * lastName
 * age
@@ -14,7 +15,7 @@ Create an Animal constructor function that has:
 
 Create a Cat constructor function that inherits from Animal and has:
 * color
-* ownerId - id of a person that is the owner of the dog - it can be null
+* ownerId - id of a person that is the owner of the cat - it can be null
 * meow - method that writes in the console: The cat [name] says Meow.
 
 Create an array of 5 people. Create two cats, both of them should have owners.
