@@ -1,41 +1,104 @@
 class App {
-    constructor(users) {
-        this.users = users;
-        this.renderUsers(this.users);
-        this.setEventListeners();
+  constructor(users) {
+    this.users = users;
+    this.renderUsers(this.users);
+    this.setEventListeners();
+  }
+
+  tableBody = document.querySelector("tbody");
+  searchInput = document.querySelector("#search-input");
+  homePage = document.querySelector("#home-page");
+  formPage = document.querySelector("#form-page");
+  inputs = Array.from(this.formPage.querySelectorAll(".form-control"));
+  submitBtn = document.querySelector("#submit-btn");
+
+  setEventListeners() {
+    this.searchInput.addEventListener("input", e =>
+      this.findUserByFullName(e.target.value)
+    );
+
+    this.submitBtn.addEventListener("click", () => this.addUser());
+
+    this.users.map(user => this.tableBody.querySelector(`#user-${user.id}`)).forEach(tr => {
+        const id = tr.id.split('-')[1];
+        tr.querySelector('.btn-danger').addEventListener('click', () => this.deleteUser(id))
+
+        tr.querySelector('.btn-warning').addEventListener('click', () => this.editUser(id))
+    });
+  }
+
+  deleteUser(id) {
+
+  }
+
+  editUser(id) {
+      console.log(id)
+  }
+
+  validateInputs(inputs) {
+    return inputs.every(input => !!input.value);
+  }
+
+  clearInputs(inputs) {
+    inputs.forEach(input => (input.value = ""));
+  }
+
+  addUser() {
+    if (!this.validateInputs(this.inputs)) {
+      alert("Please check inputs and try again!");
+      return;
     }
 
-    tableBody = document.querySelector('tbody');
-    searchInput = document.querySelector('#search-input');
+    const [firstName, lastName, city, country, spouse, age] = this.inputs.map(
+      input => input.value
+    );
+    const pets = Array.from(
+      document.querySelector("#pets").selectedOptions
+    ).map(option => option.value);
 
-    setEventListeners() {
-        this.searchInput.addEventListener('input', e => this.findUserByFullName(e.target.value))
-    }
+    let newUser = new User(
+      firstName,
+      lastName,
+      age,
+      city,
+      country,
+      spouse,
+      pets
+    );
 
-    findUserByFullName(searchTerm) {
-        const users = this.users.filter(user => user.fullName.toLowerCase().includes(searchTerm.toLowerCase()));
-        this.renderUsers(users);
-    }
+    this.users = [...this.users, newUser];
+    this.renderUsers(this.users);
+    this.clearInputs(this.inputs);
+  }
 
-    renderUsers(users) {
-        this.tableBody.innerHTML = '';
-        users.forEach(user => {
-            this.tableBody.innerHTML +=
-            `<tr>
+  findUserByFullName(searchTerm) {
+    const users = this.users.filter(user =>
+      user.fullName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    this.renderUsers(users);
+  }
+
+  renderUsers(users) {
+    this.tableBody.innerHTML = "";
+    users.forEach(user => {
+      this.tableBody.innerHTML += `<tr id="user-${user.id}">
                 <td>${user.id}</td>
                 <td>${user.fullName}</td>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
-                <td>${user.isMarried ? 'Yes' : 'No'}</td>
-                <td>${user.spouse || 'Single'}</td>
-                <td>${user.pets?.length ? user.pets.join(', ') : 'No pets'}</td>
+                <td>${user.isMarried ? "Yes" : "No"}</td>
+                <td>${user.spouse || "Single"}</td>
+                <td>${user.pets?.length ? user.pets.join(", ") : "no pets"}</td>
                 <td>${user.age}</td>
                 <td>${user.city}</td>
                 <td>${user.country}</td>
-                <td></td>
-            </tr>`
-        });
-    }
+                <td>
+                <button type="button" class="btn btn-sm btn-danger">X</button>
+                <button type="button" class="btn btn-sm btn-warning">E</button>
+                </td>
+            </tr>`;
+    });
+  }
 }
 
 class User {
@@ -49,7 +112,7 @@ class User {
     this.city = city;
     this.country = country;
     this.spouse = spouse;
-    this.pets = pets;  // ['dog', 'cat'] - OK | 'dog, cat' - NOT OK
+    this.pets = pets; // ['dog', 'cat'] - OK | 'dog, cat' - NOT OK
   }
 }
 
