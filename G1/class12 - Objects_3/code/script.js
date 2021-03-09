@@ -94,6 +94,33 @@ console.log(Calculations.pi)
 
 console.log(Math.PI)
 
+// --- Getters and Setters ----
 
+class ElectricCar extends Vehicle {
+    constructor(id, name, serialNumber, price, owner) {
+        super(id, name, serialNumber, price)
 
+        this.owner = owner
+    }
+
+    get owner() {
+        console.log("We are getting the name of the owner. Please wait...");
+        return `The owner of the car is ${this._owner}`;
+    }
+
+    set owner(ownerInput) {
+        console.log("We are setting the owner name. Please wait....");
+        ownerInput.length > 1 
+            ? this._owner = ownerInput
+            : (() => {throw new Error("The name is too short")})()
+    }
+}
+
+let myElectricCar = new ElectricCar(10, "a8", 556, 8000, "Viktor")
+
+console.log(myElectricCar.owner)
+
+myElectricCar.owner = "v";
+
+console.log(myElectricCar.owner)
 
