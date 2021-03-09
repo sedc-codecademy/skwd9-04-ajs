@@ -1,0 +1,2 @@
+Hello G4, this text will be added in db.txt, but it will overwrite the last one. This text will be appended
+MORE TEXT

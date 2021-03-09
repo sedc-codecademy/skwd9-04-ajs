@@ -42,27 +42,36 @@
     <!-- pages -->
     <div id="pages">
 
+        <!-- statistics -->
         <div class="page">
             <h1>WeatherAlert - <span id="statisticsCity"></span></h1>
             <p>The most accurate weather page in the world!<span class="tiny-text">According to some sources...</span></p>
             <div id="statisticsResult"></div>
         </div>
 
+        <!-- Hourly Data -->
         <div class="page">
             <h1>Hourly Data - <span id="hdCity"></span></h1>
             <p>Here you can read the hourly weather report for the following days. Keep in mind that it is not actually every
                 hour, but every 3 - 5 hours</p>  
             <div class="row table">
                 <div class="col-md-2">Icon</div>
-                <div class="col-md-2">Description</div>
+                <div class="col-md-2" id="sort">Description</div>
                 <div class="col-md-2">Time</div>
                 <div class="col-md-2">Temperature</div>
                 <div class="col-md-2">Humidity</div>
                 <div class="col-md-2">Wind Speed</div>
             </div>
             <div class="table" id="tableResult"></div>
+            <div>
+              <button class="btn btn-success" id="previousPageButton">previous</button>
+              <button class="btn btn-success" id="nextPageButton">next</button>
+              <div id="pagingButtons"></div>
+              <div id="currnetPage"><p>currnet page - 1</p></div>
+            </div>
         </div>
 
+        <!-- About -->
         <div class="page">
             <h1>About WeatherAlert</h1>
             <p>The application is built by an amazing developer named YOUR NAME HERE and it is a project built to have some
