@@ -11,6 +11,10 @@ class App {
   formPage = document.querySelector("#form-page");
   inputs = Array.from(this.formPage.querySelectorAll(".form-control"));
   submitBtn = document.querySelector("#submit-btn");
+  tableHeads = document.querySelector('thead').querySelectorAll('th');
+  isEditing = false;
+  editedUserId = null;
+  isAsc = true;
 
   setEventListeners() {
     this.searchInput.addEventListener("input", e =>
@@ -19,20 +23,60 @@ class App {
 
     this.submitBtn.addEventListener("click", () => this.addUser());
 
-    this.users.map(user => this.tableBody.querySelector(`#user-${user.id}`)).forEach(tr => {
-        const id = tr.id.split('-')[1];
-        tr.querySelector('.btn-danger').addEventListener('click', () => this.deleteUser(id))
+    this.users
+      .map(user => this.tableBody.querySelector(`#user-${user.id}`))
+      .forEach(tr => {
+        const id = tr.id.split("-")[1];
+        tr.querySelector(".btn-danger").addEventListener("click", () =>
+          this.deleteUser(id)
+        );
 
-        tr.querySelector('.btn-warning').addEventListener('click', () => this.editUser(id))
-    });
+        tr.querySelector(".btn-warning").addEventListener("click", () =>
+          this.editUser(id)
+        );
+      });
+
+
+    this.tableHeads.forEach(th => th.addEventListener('click', () => this.sortUsers(th.dataset.prop)))
+  }
+
+  sortUsers(property) {
+    const sortedUsers = [...this.users];
+
+    sortedUsers.sort((a, b) => {
+        if (typeof a[property] === 'string') {
+            if (this.isAsc) {
+                return a[property]?.localeCompare(b[property])
+            } else {
+                return b[property]?.localeCompare(a[property])
+            }
+        } else {
+            if (this.isAsc) {
+                return a[property] - b[property];
+            } else {
+                return b[property] - a[property];
+            }
+        }
+    })
+    this.isAsc = !this.isAsc;
+    this.renderUsers(sortedUsers)
   }
 
   deleteUser(id) {
-
+    this.users = this.users.filter(user => user.id !== Number(id));
+    this.renderUsers(this.users);
   }
 
   editUser(id) {
-      console.log(id)
+    this.isEditing = true;
+    this.editedUserId = Number(id);
+    const user = this.users.find(user => user.id === Number(id));
+
+    this.inputs.forEach(input => (input.value = user[input.id]));
+
+    document
+      .querySelectorAll("#pets option")
+      .forEach(option => (option.selected = user.pets.includes(option.value)));
   }
 
   validateInputs(inputs) {
@@ -66,7 +110,15 @@ class App {
       pets
     );
 
-    this.users = [...this.users, newUser];
+    if (!this.isEditing) {
+      this.users = [...this.users, newUser];
+    } else {
+      const index = this.users.findIndex(user => user.id === this.editedUserId);
+      this.users[index] = { ...newUser };
+      this.isEditing = false;
+      this.editedUserId = null;
+    }
+
     this.renderUsers(this.users);
     this.clearInputs(this.inputs);
   }
