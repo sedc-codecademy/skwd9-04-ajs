@@ -1,0 +1,10 @@
+[
+    {
+        "type":"dog",
+        "color":"black"
+    },
+    {
+        "type":"cat",
+        "color":"brown"
+    }
+]
