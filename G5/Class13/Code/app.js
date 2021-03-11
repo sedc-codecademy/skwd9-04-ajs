@@ -48,3 +48,12 @@ console.log(calcFromImport);
 const filePath = 'data.json';
 const obj = `{"names":["Ivan", "Martin"]}`;
 textService.addTextToFile(filePath, obj);
+
+const someStory = "This is Bob. He is a great programmer!\n\t";
+textService.appendTextToFile('data.txt', someStory);
+
+const differentStory = "Bob created an amazing app today!";
+textService.appendTextToFile('data.txt', differentStory);
+
+const dataFromText = textService.readTextFromFile('data.txt');
+console.log(dataFromText);
