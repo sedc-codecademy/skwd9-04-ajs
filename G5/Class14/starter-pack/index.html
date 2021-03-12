@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>miniblog</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__brand">mini<span>blog</span></div>
+    </header>
+    <nav class="subheader">
+      <ul class="subheader__navigation">
+        <li id="new-post-page" class="subheader__navigation-item">New Post</li>
+        <li id="all-posts-page" class="subheader__navigation-item">Posts</li>
+        <li id="about-page" class="subheader__navigation-item">About</li>
+      </ul>
+    </nav>
+    <main class="main">
+      <!-- new-post-section -->
+      <section id="post-section" class="post__section hidden">
+        <div class="post__section-title">Please enter a new post...</div>
+        <form class="post__section-form">
+          <input
+            type="text"
+            id="input-name"
+            class="post__section-input"
+            placeholder="Name"
+          />
+          <select id="input-gender" class="post__section-input">
+            <option selected disabled value="">
+              Please select your gender
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="neutral">Other</option>
+          </select>
+          <textarea
+            class="post__section-input"
+            id="input-text"
+            cols="30"
+            rows="10"
+            class="post__section-textarea"
+          ></textarea>
+          <button id="post-form-btn" type="button" class="btn">Submit</button>
+        </form>
+      </section>
+      <!-- all-posts-section -->
+      <section class="all-posts__section" id="all-posts-section">
+        <button id="get-posts" class="btn">Get Posts</button>
+        <div class="post__card">
+          <div class="post__card-header">
+            <img
+              src="./assets/icon_male.png"
+              alt=""
+              class="post__card-header-img"
+            />
+            <div class="post__card-header-title">Ivan</div>
+          </div>
+          <div class="post__card-content">
+            <div class="post__card-content-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+              aperiam, sed maiores ducimus saepe non ipsam est dicta. Numquam,
+              aliquid id nesciunt incidunt odio ab asperiores quae velit.
+              Officia minima, nesciunt pariatur dolore molestias cupiditate in
+              nemo illo consequatur molestiae, odit unde at eos obcaecati, sint
+              iusto laudantium adipisci cum.
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- about-section -->
+      <section class="about__section hidden" id="about-section">
+        <div class="about__section-title">About</div>
+        <p class="about__section-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+          voluptates saepe maxime optio eum repudiandae fuga praesentium,
+          necessitatibus tempore odit harum expedita voluptatibus tenetur,
+          aliquam culpa sint. Dicta quis, rerum dolore ab, quaerat perspiciatis
+          minus quos culpa harum odio molestiae facilis excepturi blanditiis.
+          Voluptatibus mollitia officia sit id voluptas eum fugit non magni esse
+          expedita. Exercitationem eaque aspernatur nulla culpa dicta quod ipsa
+          fugiat possimus, delectus harum laborum enim architecto sequi ut
+          distinctio voluptate perferendis accusantium deleniti laudantium, sed
+          a.
+        </p>
+        <br />
+        <p class="about__section-text">
+          Ad quisquam, repudiandae voluptatibus illum ipsa minus, nesciunt modi
+          vel, nemo ut officiis laborum sit eaque dicta maxime iste neque?
+          Doloribus illo harum vero quibusdam ad nihil veniam, necessitatibus
+          ipsum iure cumque facilis in aliquid delectus recusandae ut quae
+          officiis excepturi ipsa sapiente incidunt ratione est error nam
+          similique? Magni asperiores numquam, voluptatum ad earum excepturi
+          dicta quaerat repudiandae animi nobis sed, aperiam exercitationem in
+          ex nisi fuga hic beatae.
+        </p>
+      </section>
+    </main>
+    <footer class="footer"></footer>
+    <script src="nav.util.js"></script>
+  </body>
+</html>
