@@ -11,5 +11,8 @@
   "dependencies": {
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "moment": "^2.29.1"
   }
 }
