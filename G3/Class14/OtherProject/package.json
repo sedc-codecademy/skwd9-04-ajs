@@ -1,0 +1,16 @@
+{
+  "name": "otherproject",
+  "version": "1.0.0",
+  "description": "This is our second NPM project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SEDC",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.6.0",
+    "underscore": "^1.12.0"
+  }
+}
