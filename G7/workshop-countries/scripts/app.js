@@ -62,6 +62,17 @@ class App {
     });
   }
 
+  sortCountries(isAscending, sortBy) {
+    let countries = [...this.countries.filter(c => !!c[sortBy])];
+    if (isAscending) {
+      countries.sort((a, b) => a[sortBy] - b[sortBy]);
+    } else {
+      countries.sort((a, b) => b[sortBy] - a[sortBy]);
+    }
+
+    this.renderCountries(countries);
+  }
+
   async getAllCountries() {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
     const countries = await response.json();
