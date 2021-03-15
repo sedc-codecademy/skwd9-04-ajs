@@ -30,9 +30,9 @@ Use async await.
  
 *create a setter and getter for the color and name property. The setter/getter will log a corresponding message. The setter should do validation.
  
-## Add class Rectangle, that inherits from Shape. It should have properties sideA and sideB. Override the getArea and getPerimeter methods correspondingly for a rectangle. 
+#### Add class Rectangle, that inherits from Shape. It should have properties sideA and sideB. Override the getArea and getPerimeter methods correspondingly for a rectangle. 
 
-## Add class Circle, that inherits from Shape. It should have property radius. Override the getArea and getPerimeter methods correspondingly for a circle. 
+#### Add class Circle, that inherits from Shape. It should have property radius. Override the getArea and getPerimeter methods correspondingly for a circle. 
 ### Test with few objects.
 
 # Exercise 4
