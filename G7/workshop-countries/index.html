@@ -14,12 +14,63 @@
   </head>
   <body>
     <header>
-      <div class="container"></div>
+      <div class="container">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="region" id="All" />
+          <label class="form-check-label" for="All"> All </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="region"
+            id="Europe"
+          />
+          <label class="form-check-label" for="Europe"> Europe </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="region"
+            id="Asia"
+          />
+          <label class="form-check-label" for="Asia"> Asia </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="region"
+            id="Africa"
+          />
+          <label class="form-check-label" for="Africa"> Africa </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="region"
+            id="Americas"
+          />
+          <label class="form-check-label" for="Americas"> Americas </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="region"
+            id="Oceania"
+          />
+          <label class="form-check-label" for="Oceania"> Oceania </label>
+        </div>
+      </div>
+      <div class="container">
+        <select name="languages" id="languages"></select>
+      </div>
     </header>
     <div class="container-fluid">
-      <div class="row" id="data-container">
-        
-      </div>
+      <div class="row" id="data-container"></div>
       <div
         class="spinner-grow m-auto mt-5"
         id="loader"
