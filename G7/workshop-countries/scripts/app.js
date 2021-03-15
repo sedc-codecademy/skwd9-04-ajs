@@ -1,11 +1,66 @@
 class App {
   constructor() {
     this.getAllCountries();
+    this.setEventHandlers();
   }
 
   countries = [];
+  allLanguages = new Set();
+  isAsc = true;
+  sortBy = "area";
+
   dataContainer = document.querySelector("#data-container");
   loader = document.querySelector("#loader");
+  languagesSelect = document.querySelector("#languages");
+  regionInputs = document.querySelectorAll('input[name="region"]');
+  sortDirectionInputs = document.querySelectorAll(
+    'input[name="sort-direction"]'
+  );
+  sortByInputs = document.querySelectorAll('input[name="sort"]');
+
+  setEventHandlers() {
+
+    // filter by region
+    this.regionInputs.forEach(input =>
+      input.addEventListener("input", e => {
+        if (e.target.id === "All") {
+          this.renderCountries(this.countries);
+          return;
+        }
+        const countries = this.countries.filter(
+          country => country.region === e.target.id
+        );
+        this.renderCountries(countries);
+      })
+    );
+
+    // sort by area or population
+    this.sortByInputs.forEach(input =>
+      input.addEventListener("input", e => {
+        this.sortBy = e.target.id;
+        this.sortCountries(this.isAsc, e.target.id);
+      })
+    );
+
+    // sort by ascending or descending
+    this.sortDirectionInputs.forEach(input =>
+      input.addEventListener("input", e => {
+        this.isAsc = e.target.id === "asc" && e.target.checked; // if the radio ascending is checked = true, if not false
+        this.sortCountries(this.isAsc, this.sortBy);
+      })
+    );
+
+    // get the countries where the languages property, contains the selected language
+    this.languagesSelect.addEventListener("input", e => {
+      const countries = this.countries.filter(
+        country =>
+          !!country.languages.filter(
+            language => language.name === e.target.value
+          ).length // case 1: [] - false case 2: ['lang'] = true
+      );
+      this.renderCountries(countries);
+    });
+  }
 
   async getAllCountries() {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
@@ -26,14 +81,27 @@ class App {
           country.languages
         )
     );
+    this.countries.forEach(country =>
+      country.languages.forEach(language =>
+        this.allLanguages.add(language.name) // add all the languages to the total list of languages
+      )
+    );
     this.renderCountries(this.countries);
+  }
+
+  listLanguages() { //add option for each language
+    this.allLanguages.forEach(language => {
+      this.languagesSelect.innerHTML += `<option value="${language}">${language}</option>`;
+    });
   }
 
   async renderCountries(countries) {
     this.loader.style.display = "block";
     this.dataContainer.style.display = "none";
 
-    for (const country of countries) {
+    this.dataContainer.innerHTML = ""; //reset the countries list in the DOM
+
+    for (const country of countries) { // forEach does not work with async await, so we need to go back to for of
       this.dataContainer.innerHTML += `
         <div class="col-md-4">
           <div class="card" id="${country.alpha3Code}">
@@ -49,7 +117,7 @@ class App {
       }</p>
             </div>
             <ul class="list-group list-group-flush">
-             ${(await this.getNeighbors(country.borders)).join('')}
+             ${(await this.getNeighbors(country.borders)).join("") /* we need to await as the function returns a promise */}
             </ul>
             <div class="card-body">
               <p>Population: ${country.population}</p>
@@ -60,22 +128,31 @@ class App {
         `;
     }
 
+    this.listLanguages();
     this.loader.style.display = "none";
     this.dataContainer.style.display = "flex";
   }
 
-  // code => country => list item
+  // mapping: code => country => list item
   async getNeighbors(codes) {
-    const neighbors = await Promise.all(codes.map(async (code) => {
-        let country = this.countries.find(country => country.alpha3Code === code);
+    // wait for the promise all to return value
+    const neighbors = await Promise.all( //wait for all promises to resolve to return a single promise
+      codes.map(async code => { // needs to be async as we make a call to get the country for each code
+        let country = this.countries.find(
+          country => country.alpha3Code === code
+        );
+        // if we already have stored the country, no need to make a call to be API
         if (country?.name) {
-            return `<li class="list-group-item"><a href="#${country.alpha3Code}">${country.name}</a></li>`
+          return `<li class="list-group-item"><a href="#${country.alpha3Code}">${country.name}</a></li>`;
         }
-        const response = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`);
+        const response = await fetch(
+          `https://restcountries.eu/rest/v2/alpha/${code}`
+        );
         country = await response.json();
-        console.log(code, country)
-        return `<li class="list-group-item"><a href="#${country.alpha3Code}">${country.name}</a></li>`
-    }))
+        console.log(code, country);
+        return `<li class="list-group-item"><a href="#${country.alpha3Code}">${country.name}</a></li>`;
+      })
+    );
     return neighbors;
   }
 }
