@@ -4,8 +4,8 @@ class App {
   }
 
   countries = [];
-  dataContainer = document.querySelector('#data-container');
-  loader = document.querySelector('#loader');
+  dataContainer = document.querySelector("#data-container");
+  loader = document.querySelector("#loader");
 
   async getAllCountries() {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
@@ -29,23 +29,27 @@ class App {
     this.renderCountries(this.countries);
   }
 
-  renderCountries(countries) {
-    this.loader.style.display = 'block';
-    this.dataContainer.style.display = 'none';
+  async renderCountries(countries) {
+    this.loader.style.display = "block";
+    this.dataContainer.style.display = "none";
 
-    countries.forEach(country => {
-        this.dataContainer.innerHTML += `
+    for (const country of countries) {
+      this.dataContainer.innerHTML += `
         <div class="col-md-4">
           <div class="card" id="${country.alpha3Code}">
-            <img src="${country.flag}" class="card-img-top" alt="Flag for ${country.name}" />
+            <img src="${country.flag}" class="card-img-top" alt="Flag for ${
+        country.name
+      }" />
             <div class="card-body">
-              <h5 class="card-title">${country.name} (${country.nativeName})</h5>
-              <p class="card-text">Located in ${country.region}, ${country.subregion}</p>
+              <h5 class="card-title">${country.name} (${
+        country.nativeName
+      })</h5>
+              <p class="card-text">Located in ${country.region}, ${
+        country.subregion
+      }</p>
             </div>
             <ul class="list-group list-group-flush">
-             ${country.borders}
-              <li class="list-group-item">NEIGHBOR 1</li>
-              <li class="list-group-item">NEIGHBOR 2</li>
+             ${(await this.getNeighbors(country.borders)).join('')}
             </ul>
             <div class="card-body">
               <p>Population: ${country.population}</p>
@@ -53,11 +57,21 @@ class App {
             </div>
           </div>
         </div>
-        `
-    })
+        `;
+    }
 
-    this.loader.style.display = 'none';
-    this.dataContainer.style.display = 'flex';
+    this.loader.style.display = "none";
+    this.dataContainer.style.display = "flex";
+  }
+
+  async getNeighbors(codes) {
+    const neighbors = await Promise.all(codes.map(async (code) => {
+        const response = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`);
+        const country = await response.json();
+        console.log(code, country)
+        return `<li class="list-group-item">${country.name}</li>`
+    }))
+    return neighbors;
   }
 }
 
