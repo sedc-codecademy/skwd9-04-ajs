@@ -1,0 +1,19 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "some description",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node script.js"
+  },
+  "author": "Goce",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.21"
+  }
+}

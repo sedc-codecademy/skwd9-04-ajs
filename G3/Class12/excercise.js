@@ -104,6 +104,7 @@ function Student(firstName, lastName, age, completedSubjects) {
     // CompletedSubjects and then add the new Subject
 
     this.startSubject = function (subject) {
+        // debugger; // calls the debugger into bbrowser 
         if (this.academy) {
             // let hasSub = false;
             // for (const sub of this.academy.subjects) {
