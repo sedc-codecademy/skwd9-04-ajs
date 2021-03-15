@@ -12,7 +12,7 @@ Olympic Games is an application that is meant to create a simulation of a real-l
 	* List of sports
 	* ChangeSportsList - a method that will change the list of sports that should be.
 	* ChangeDuration - method that will change the duration of the games with properties from and to.
-	* ChangeNumberOfSportsGames, ChangeListOfCountries, and ChangeNumberOfPeople - each of these methods should change the date regardless of the number of games that might be included or excluded, also with countries that might contest and the number of people as well.
+	* ChangeNumberOfSportsGames, ChangeListOfCountries, and ChangeNumberOfPeople - each of these methods should change the datа regardless of the number of games that might be included or excluded, also with countries that might contest and the number of people as well.
 	
 * There should be a class Country that has properties (create get/set for each of the properties) and method:
 	* Name
