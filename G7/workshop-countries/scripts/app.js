@@ -64,12 +64,17 @@ class App {
     this.dataContainer.style.display = "flex";
   }
 
+  // code => country => list item
   async getNeighbors(codes) {
     const neighbors = await Promise.all(codes.map(async (code) => {
+        let country = this.countries.find(country => country.alpha3Code === code);
+        if (country?.name) {
+            return `<li class="list-group-item"><a href="#${country.alpha3Code}">${country.name}</a></li>`
+        }
         const response = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`);
-        const country = await response.json();
+        country = await response.json();
         console.log(code, country)
-        return `<li class="list-group-item">${country.name}</li>`
+        return `<li class="list-group-item"><a href="#${country.alpha3Code}">${country.name}</a></li>`
     }))
     return neighbors;
   }
