@@ -4,5 +4,5 @@ Source code repository for SEDC Code Academy @Skopje 9.0 4th subject 'Advanced J
 #### Homeworks and questions
 
 You can submit your homeworks or ask questions from the classes.
-* martin.panovski93@gmail.com
+* panovski.martin93@gmail.com
 * ivan.lazarevski@seavus.com
